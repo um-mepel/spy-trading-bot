@@ -1,0 +1,6 @@
+Dataset,Return,Drawdown,Trades
+SPY 2025,21.64%,-18.13%,15
+MSFT 2024 (Conf>0.65),22.24%,0.02%,22
+MSFT 2024 (Conf>0.75),22.24%,0.02%,2
+MSFT 2024 (Conf>0.85),4.01%,0.02%,0
+MSFT 2024 B&H,16.06%,N/A,-

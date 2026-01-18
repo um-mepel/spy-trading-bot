@@ -1,0 +1,39 @@
+# ============================================================================
+# Systemd Service File for Trading Bot
+# ============================================================================
+# Copy to: /etc/systemd/system/trading-bot.service
+#
+# Commands:
+#   sudo systemctl enable trading-bot    # Start on boot
+#   sudo systemctl start trading-bot     # Start now
+#   sudo systemctl stop trading-bot      # Stop
+#   sudo systemctl restart trading-bot   # Restart
+#   sudo systemctl status trading-bot    # Check status
+#   sudo journalctl -u trading-bot -f    # View logs
+# ============================================================================
+
+[Unit]
+Description=SPY Minute-Level Trading Bot
+After=network.target
+
+[Service]
+Type=simple
+User=trading
+Group=trading
+WorkingDirectory=/opt/trading-bot
+Environment="PATH=/opt/trading-bot/venv/bin"
+ExecStart=/opt/trading-bot/venv/bin/python3 -m live_trading.run_bot --interval 60
+Restart=always
+RestartSec=10
+
+# Logging
+StandardOutput=append:/opt/trading-bot/logs/bot.log
+StandardError=append:/opt/trading-bot/logs/bot_error.log
+
+# Security
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/opt/trading-bot
+
+[Install]
+WantedBy=multi-user.target

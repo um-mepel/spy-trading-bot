@@ -1,0 +1,10 @@
+{
+  "ticker": "AAPL",
+  "training_period": "2025-12-08 to 2025-12-12",
+  "testing_period": "2025-12-15 to 2025-12-19",
+  "interval": "1m",
+  "training_samples": 1950,
+  "testing_samples": 1950,
+  "predictions": 1949,
+  "results_dir": "/Users/mihirepel/Personal_Projects/Trading/historical_training_v2/results/minute_data_late_2025"
+}

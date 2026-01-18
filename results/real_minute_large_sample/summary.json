@@ -1,0 +1,15 @@
+{
+  "ticker": "SPY",
+  "data_type": "minute-level",
+  "training_period": "2024-10-01 to 2024-11-30",
+  "testing_period": "2024-12-01 to 2024-12-31",
+  "training_samples": 17174,
+  "testing_samples": 8572,
+  "total_samples": 25746,
+  "prediction_horizon": "20 minute bars ahead",
+  "accuracy": 0.557461206393653,
+  "edge_percent": 5.746120639365304,
+  "total_predictions": 8571,
+  "average_confidence": 0.6103488507758722,
+  "timestamp": "2026-01-17T21:27:11.762933"
+}

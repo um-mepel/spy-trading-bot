@@ -1,0 +1,9 @@
+{
+  "ticker": "AAPL",
+  "period": "2026-01-12 to 2026-01-16",
+  "interval": "1m",
+  "training_samples": 1170,
+  "testing_samples": 780,
+  "predictions": 779,
+  "results_dir": "/Users/mihirepel/Personal_Projects/Trading/historical_training_v2/results/minute_data_2026"
+}
