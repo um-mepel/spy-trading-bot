@@ -3,440 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPY Trading Bot | AI-Powered Minute-Level Trading</title>
+    <title>SPY Trading Bot | Minute-Level AI Trading</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #12121a;
-            --bg-card: #1a1a24;
-            --accent-cyan: #00d4ff;
-            --accent-green: #00ff88;
-            --accent-purple: #8b5cf6;
-            --accent-orange: #ff6b35;
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0b0;
-            --border: #2a2a3a;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Animated background */
-        .bg-grid {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .gradient-orb {
-            position: fixed;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.15;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .orb-1 {
-            top: -200px;
-            right: -200px;
-            background: var(--accent-cyan);
-        }
-
-        .orb-2 {
-            bottom: -200px;
-            left: -200px;
-            background: var(--accent-purple);
-        }
-
-        /* Header */
-        header {
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(10, 10, 15, 0.8);
-        }
-
-        .logo {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-cyan);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            margin-left: 30px;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--accent-cyan);
-        }
-
-        /* Hero */
-        .hero {
-            padding: 100px 40px;
-            text-align: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            padding: 8px 20px;
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            border-radius: 50px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--accent-cyan);
-            margin-bottom: 30px;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #fff 0%, var(--accent-cyan) 50%, var(--accent-purple) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto 40px;
-        }
-
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            max-width: 1000px;
-            margin: 60px auto;
-            padding: 0 40px;
-        }
-
-        .stat-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 30px;
-            text-align: center;
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-cyan);
-        }
-
-        .stat-value {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--accent-green);
-            margin-bottom: 8px;
-        }
-
-        .stat-card:nth-child(2) .stat-value { color: var(--accent-cyan); }
-        .stat-card:nth-child(3) .stat-value { color: var(--accent-purple); }
-        .stat-card:nth-child(4) .stat-value { color: var(--accent-orange); }
-
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Section */
-        section {
-            padding: 80px 40px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        .section-header p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-
-        /* Chart Container */
-        .chart-container {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 40px;
-            overflow: hidden;
-        }
-
-        .chart-container img {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-        }
-
-        .chart-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .chart-title::before {
-            content: '';
-            width: 4px;
-            height: 24px;
-            background: var(--accent-cyan);
-            border-radius: 2px;
-        }
-
-        /* Two Column Grid */
-        .two-col {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-
-        /* Performance Table */
-        .performance-table {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 60px 0;
-        }
-
-        .performance-table h3 {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .performance-table h3::before {
-            content: '📊';
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            padding: 16px 20px;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-
-        th {
-            color: var(--text-secondary);
-            font-weight: 500;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-        }
-
-        td {
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .positive {
-            color: var(--accent-green);
-        }
-
-        .highlight-row {
-            background: rgba(0, 212, 255, 0.05);
-        }
-
-        /* Technology Stack */
-        .tech-stack {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin: 40px 0;
-        }
-
-        .tech-badge {
-            padding: 12px 24px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 50px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            transition: all 0.3s;
-        }
-
-        .tech-badge:hover {
-            border-color: var(--accent-cyan);
-            color: var(--accent-cyan);
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 60px;
-            text-align: center;
-            margin: 60px 0;
-        }
-
-        .cta-section h2 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-
-        .cta-section p {
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 16px 40px;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            color: white;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid var(--border);
-            margin-left: 15px;
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--accent-cyan);
-            box-shadow: none;
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 40px;
-            text-align: center;
-            color: var(--text-secondary);
-        }
-
-        footer a {
-            color: var(--accent-cyan);
-            text-decoration: none;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .two-col {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-            header {
-                padding: 15px 20px;
-            }
-            nav {
-                display: none;
-            }
-            section {
-                padding: 40px 20px;
-            }
-        }
-
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .float {
-            animation: float 6s ease-in-out infinite;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="bg-grid"></div>
@@ -449,24 +18,23 @@
             SPY Trading Bot
         </div>
         <nav>
-            <a href="#results">Results</a>
-            <a href="#performance">Performance</a>
-            <a href="#portfolio">Portfolio</a>
+            <a href="index.html" class="active">Minute-by-Minute</a>
+            <a href="daily-model.html">Daily Model</a>
             <a href="https://github.com/um-mepel/spy-trading-bot" target="_blank">GitHub</a>
         </nav>
     </header>
 
     <main>
         <section class="hero">
-            <div class="hero-badge">🤖 AI-Powered Trading</div>
-            <h1>Minute-Level SPY Trading with Machine Learning</h1>
-            <p>A LightGBM-based trading system achieving 56.74% accuracy on real market data, 
-               with statistically significant edge over random trading.</p>
+            <div class="hero-badge">⚡ MINUTE-LEVEL TRADING</div>
+            <h1>Real-Time SPY Predictions at 1-Minute Resolution</h1>
+            <p>A LightGBM model trained on 928,000+ real minute bars, achieving statistically significant 
+               edge on out-of-sample data with live Alpaca integration.</p>
             
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-value">+17.68%</div>
-                    <div class="stat-label">Total Return</div>
+                    <div class="stat-label">6-Month Return</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value">56.74%</div>
@@ -477,16 +45,45 @@
                     <div class="stat-label">Training Bars</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">6.92</div>
-                    <div class="stat-label">Profit Factor</div>
+                    <div class="stat-value">p&lt;0.0001</div>
+                    <div class="stat-label">Statistical Sig.</div>
                 </div>
+            </div>
+        </section>
+
+        <section class="model-comparison">
+            <div class="comparison-cards">
+                <a href="index.html" class="model-card active">
+                    <div class="model-icon">⚡</div>
+                    <h3>Minute-by-Minute Model</h3>
+                    <p>Real-time predictions every 60 seconds using live Alpaca data</p>
+                    <ul>
+                        <li>928,494 training samples</li>
+                        <li>4.5 years of data (2020-2024)</li>
+                        <li>Extended hours trading</li>
+                        <li>Live deployment ready</li>
+                    </ul>
+                    <span class="model-tag current">Currently Viewing</span>
+                </a>
+                <a href="daily-model.html" class="model-card">
+                    <div class="model-icon">📅</div>
+                    <h3>Daily Model</h3>
+                    <p>End-of-day predictions for swing trading strategies</p>
+                    <ul>
+                        <li>Multi-year backtesting</li>
+                        <li>Regime-aware trading</li>
+                        <li>Ensemble methods</li>
+                        <li>Lower frequency signals</li>
+                    </ul>
+                    <span class="model-tag">View Daily Model →</span>
+                </a>
             </div>
         </section>
 
         <section id="results">
             <div class="section-header">
-                <h2>Real Data Performance</h2>
-                <p>Tested on 6 months of real SPY minute-level data from Alpaca Markets</p>
+                <h2>Real Minute Data Performance</h2>
+                <p>Tested on 99,325 out-of-sample minute bars from July to December 2024</p>
             </div>
 
             <div class="chart-container">
@@ -496,84 +93,79 @@
 
             <div class="two-col">
                 <div class="chart-container">
-                    <div class="chart-title">Trading Simulation</div>
+                    <div class="chart-title">High-Confidence Trading Simulation</div>
                     <img src="assets/02_trading_simulation.png" alt="Trading Simulation">
                 </div>
                 <div class="chart-container">
-                    <div class="chart-title">Synthetic vs Real Data</div>
+                    <div class="chart-title">Real vs Synthetic Data Comparison</div>
                     <img src="assets/03_synthetic_vs_real_comparison.png" alt="Synthetic vs Real">
                 </div>
             </div>
         </section>
 
-        <section id="performance">
+        <section id="analysis">
             <div class="section-header">
-                <h2>6-Month Analysis</h2>
-                <p>Comprehensive breakdown of trading performance from July to December 2024</p>
+                <h2>6-Month Deep Analysis</h2>
+                <p>Comprehensive breakdown of every trading day from July to December 2024</p>
             </div>
 
             <div class="chart-container">
-                <div class="chart-title">Full Period Analysis</div>
+                <div class="chart-title">Full Period Performance Dashboard</div>
                 <img src="assets/05_full_6month_analysis.png" alt="6 Month Analysis">
             </div>
 
             <div class="performance-table">
-                <h3>Performance Metrics</h3>
+                <h3>📊 Key Metrics</h3>
                 <table>
                     <thead>
                         <tr>
                             <th>Metric</th>
                             <th>Value</th>
-                            <th>Description</th>
+                            <th>Significance</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="highlight-row">
                             <td>Overall Accuracy</td>
                             <td class="positive">56.74%</td>
-                            <td>Directional prediction accuracy</td>
+                            <td>+6.74% edge over random</td>
                         </tr>
                         <tr>
                             <td>High Confidence Accuracy</td>
                             <td class="positive">58.23%</td>
-                            <td>Accuracy when confidence &gt; 0.7</td>
+                            <td>+8.23% edge when confident</td>
                         </tr>
                         <tr class="highlight-row">
-                            <td>Edge vs Random</td>
-                            <td class="positive">+6.74%</td>
-                            <td>Advantage over 50% baseline</td>
-                        </tr>
-                        <tr>
                             <td>Z-Score</td>
                             <td class="positive">42.89</td>
-                            <td>Statistical significance measure</td>
+                            <td>Extremely significant</td>
                         </tr>
-                        <tr class="highlight-row">
+                        <tr>
                             <td>P-Value</td>
                             <td class="positive">&lt; 0.0001</td>
-                            <td>Probability due to chance</td>
-                        </tr>
-                        <tr>
-                            <td>Training Samples</td>
-                            <td>928,494</td>
-                            <td>4.5 years of minute data</td>
+                            <td>Not due to chance</td>
                         </tr>
                         <tr class="highlight-row">
-                            <td>Testing Samples</td>
-                            <td>99,325</td>
-                            <td>6 months of out-of-sample data</td>
+                            <td>Winning Days</td>
+                            <td class="positive">128/135</td>
+                            <td>94.8% of trading days</td>
                         </tr>
                         <tr>
-                            <td>Winning Days</td>
-                            <td class="positive">128/135 (94.8%)</td>
-                            <td>Days with &gt;50% accuracy</td>
+                            <td>Training Period</td>
+                            <td>Jan 2020 - Jun 2024</td>
+                            <td>4.5 years</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Testing Period</td>
+                            <td>Jul 2024 - Dec 2024</td>
+                            <td>6 months out-of-sample</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <div class="chart-container">
-                <div class="chart-title">Single Day Deep Dive: August 5, 2024 (Volatile Day)</div>
+                <div class="chart-title">Single Day Analysis: August 5, 2024 (High Volatility)</div>
                 <img src="assets/04_single_day_2024-08-05.png" alt="Single Day Analysis">
             </div>
         </section>
@@ -581,15 +173,15 @@
         <section id="portfolio">
             <div class="section-header">
                 <h2>Portfolio Simulation</h2>
-                <p>Starting with $100,000, simulating realistic trading with slippage and position sizing</p>
+                <p>$100,000 starting capital with realistic execution, slippage, and position sizing</p>
             </div>
 
             <div class="chart-container">
-                <div class="chart-title">Portfolio Performance</div>
+                <div class="chart-title">Complete Portfolio Backtest</div>
                 <img src="assets/06_portfolio_simulation.png" alt="Portfolio Simulation">
             </div>
 
-            <div class="stats-grid" style="grid-template-columns: repeat(5, 1fr);">
+            <div class="stats-grid five-col">
                 <div class="stat-card">
                     <div class="stat-value">$117.7K</div>
                     <div class="stat-label">Final Value</div>
@@ -600,62 +192,83 @@
                 </div>
                 <div class="stat-card">
                     <div class="stat-value">2,795</div>
-                    <div class="stat-label">Total Trades</div>
+                    <div class="stat-label">Trades</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">6.92</div>
+                    <div class="stat-label">Profit Factor</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value">-0.08%</div>
                     <div class="stat-label">Max Drawdown</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-value">+9.89%</div>
-                    <div class="stat-label">Alpha vs B&H</div>
+            </div>
+
+            <div class="alpha-card">
+                <div class="alpha-value">+9.89%</div>
+                <div class="alpha-label">Alpha Generated vs Buy-and-Hold</div>
+                <p>Strategy returned +17.68% while SPY buy-and-hold returned +7.79%</p>
+            </div>
+        </section>
+
+        <section id="live">
+            <div class="section-header">
+                <h2>Live Trading Infrastructure</h2>
+                <p>Ready for deployment with Alpaca Markets integration</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Alpaca Integration</h3>
+                    <p>Direct connection to Alpaca Markets for paper and live trading</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">☁️</div>
+                    <h3>Google Cloud Ready</h3>
+                    <p>Deployment scripts for running 24/7 on GCP Compute Engine</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🕐</div>
+                    <h3>Extended Hours</h3>
+                    <p>Trades pre-market (4am), regular, and after-hours (8pm)</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Risk Management</h3>
+                    <p>Daily loss limits, max drawdown stops, confidence filtering</p>
                 </div>
             </div>
 
-            <div class="two-col">
-                <div class="chart-container">
-                    <div class="chart-title">Strategy vs S&P 500</div>
-                    <img src="assets/strategy_vs_sp500_comprehensive.png" alt="Strategy vs SP500">
-                </div>
-                <div class="chart-container">
-                    <div class="chart-title">Strategy Comparison</div>
-                    <img src="assets/strategy_comparison_summary.png" alt="Strategy Comparison">
-                </div>
+            <div class="code-block">
+                <div class="code-header">Quick Start</div>
+                <pre><code># Run minute-level test on real data
+python3 tests/test_real_minute_data_strict.py
+
+# Start live trading bot (paper)
+python3 live_trading/run_bot.py --simulate
+
+# Deploy to Google Cloud
+./live_trading/deploy/deploy.sh trading-bot-vm us-central1-a</code></pre>
             </div>
         </section>
 
         <section>
-            <div class="section-header">
-                <h2>Technology Stack</h2>
-                <p>Built with modern ML and trading infrastructure</p>
-            </div>
-
-            <div class="tech-stack">
-                <span class="tech-badge">Python 3.11+</span>
-                <span class="tech-badge">LightGBM</span>
-                <span class="tech-badge">Alpaca Markets API</span>
-                <span class="tech-badge">Pandas</span>
-                <span class="tech-badge">NumPy</span>
-                <span class="tech-badge">Scikit-learn</span>
-                <span class="tech-badge">Matplotlib</span>
-                <span class="tech-badge">Google Cloud</span>
-            </div>
-
             <div class="cta-section">
-                <h2>View the Source Code</h2>
-                <p>The complete trading system is open source and available on GitHub</p>
-                <a href="https://github.com/um-mepel/spy-trading-bot" class="btn" target="_blank">View on GitHub</a>
-                <a href="https://github.com/um-mepel/spy-trading-bot/blob/main/START_HERE.md" class="btn btn-secondary" target="_blank">Documentation</a>
+                <h2>Explore the Code</h2>
+                <p>Full source code, documentation, and deployment scripts available on GitHub</p>
+                <a href="https://github.com/um-mepel/spy-trading-bot" class="btn" target="_blank">View Repository</a>
+                <a href="daily-model.html" class="btn btn-secondary">View Daily Model</a>
             </div>
         </section>
     </main>
 
     <footer>
         <p>Built by <a href="https://github.com/um-mepel">@um-mepel</a> | 
-           Data from <a href="https://alpaca.markets">Alpaca Markets</a> | 
-           <a href="https://github.com/um-mepel/spy-trading-bot">GitHub Repository</a></p>
-        <p style="margin-top: 10px; font-size: 0.85rem;">
-            ⚠️ This is for educational purposes only. Past performance does not guarantee future results.
+           Data from <a href="https://alpaca.markets">Alpaca Markets</a></p>
+        <p class="disclaimer">
+            ⚠️ For educational purposes only. Past performance does not guarantee future results. 
+            Trading involves substantial risk of loss.
         </p>
     </footer>
 </body>

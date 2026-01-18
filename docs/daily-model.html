@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Model | SPY Trading Bot</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="gradient-orb orb-1 orb-orange"></div>
+    <div class="gradient-orb orb-2"></div>
+
+    <header>
+        <div class="logo">
+            <div class="logo-icon">📈</div>
+            SPY Trading Bot
+        </div>
+        <nav>
+            <a href="index.html">Minute-by-Minute</a>
+            <a href="daily-model.html" class="active">Daily Model</a>
+            <a href="https://github.com/um-mepel/spy-trading-bot" target="_blank">GitHub</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-badge hero-badge-orange">📅 DAILY TIMEFRAME</div>
+            <h1>End-of-Day Trading with Regime Detection</h1>
+            <p>A sophisticated ensemble model combining LightGBM, XGBoost, and Random Forest 
+               with market regime awareness for swing trading strategies.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card orange">
+                    <div class="stat-value">3+ Years</div>
+                    <div class="stat-label">Backtested</div>
+                </div>
+                <div class="stat-card orange">
+                    <div class="stat-value">Ensemble</div>
+                    <div class="stat-label">Model Type</div>
+                </div>
+                <div class="stat-card orange">
+                    <div class="stat-value">Regime</div>
+                    <div class="stat-label">Aware</div>
+                </div>
+                <div class="stat-card orange">
+                    <div class="stat-value">24</div>
+                    <div class="stat-label">Indicators</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="model-comparison">
+            <div class="comparison-cards">
+                <a href="index.html" class="model-card">
+                    <div class="model-icon">⚡</div>
+                    <h3>Minute-by-Minute Model</h3>
+                    <p>Real-time predictions every 60 seconds using live Alpaca data</p>
+                    <ul>
+                        <li>928,494 training samples</li>
+                        <li>4.5 years of data (2020-2024)</li>
+                        <li>Extended hours trading</li>
+                        <li>Live deployment ready</li>
+                    </ul>
+                    <span class="model-tag">View Minute Model →</span>
+                </a>
+                <a href="daily-model.html" class="model-card active orange-active">
+                    <div class="model-icon">📅</div>
+                    <h3>Daily Model</h3>
+                    <p>End-of-day predictions for swing trading strategies</p>
+                    <ul>
+                        <li>Multi-year backtesting</li>
+                        <li>Regime-aware trading</li>
+                        <li>Ensemble methods</li>
+                        <li>Lower frequency signals</li>
+                    </ul>
+                    <span class="model-tag current">Currently Viewing</span>
+                </a>
+            </div>
+        </section>
+
+        <section id="overview">
+            <div class="section-header">
+                <h2>Model Architecture</h2>
+                <p>Multi-model ensemble with market regime detection and dynamic position sizing</p>
+            </div>
+
+            <div class="architecture-grid">
+                <div class="arch-card">
+                    <h3>🌳 Ensemble Models</h3>
+                    <ul>
+                        <li><strong>LightGBM</strong> - Gradient boosting with leaf-wise growth</li>
+                        <li><strong>XGBoost</strong> - Regularized gradient boosting</li>
+                        <li><strong>Random Forest</strong> - Bagged decision trees</li>
+                    </ul>
+                    <p class="arch-note">Predictions averaged for robustness</p>
+                </div>
+                <div class="arch-card">
+                    <h3>📊 Technical Indicators</h3>
+                    <ul>
+                        <li>SMA/EMA (5, 10, 20, 50 day)</li>
+                        <li>MACD, RSI, Momentum, ROC</li>
+                        <li>Bollinger Bands, ATR</li>
+                        <li>Volume ratios, Volatility</li>
+                    </ul>
+                    <p class="arch-note">24 features engineered from OHLCV</p>
+                </div>
+                <div class="arch-card">
+                    <h3>🔄 Regime Detection</h3>
+                    <ul>
+                        <li><strong>Bullish</strong> - Trend following, larger positions</li>
+                        <li><strong>Neutral</strong> - Standard sizing</li>
+                        <li><strong>Bearish</strong> - Reduced exposure, defensive</li>
+                    </ul>
+                    <p class="arch-note">Dynamic multipliers based on market state</p>
+                </div>
+                <div class="arch-card">
+                    <h3>🎯 Exit Model</h3>
+                    <ul>
+                        <li>Separate model for position exits</li>
+                        <li>Profit targets and stop losses</li>
+                        <li>Time-based exit rules</li>
+                    </ul>
+                    <p class="arch-note">Dual-model system for entry/exit</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="performance">
+            <div class="section-header">
+                <h2>Backtesting Results</h2>
+                <p>Historical performance on SPY daily data with regime-aware position sizing</p>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">Strategy vs S&P 500 Benchmark</div>
+                <img src="assets/strategy_vs_sp500_comprehensive.png" alt="Strategy vs SP500">
+            </div>
+
+            <div class="two-col">
+                <div class="chart-container">
+                    <div class="chart-title">Portfolio Value Over Time</div>
+                    <img src="assets/portfolio_value.png" alt="Portfolio Value">
+                </div>
+                <div class="chart-container">
+                    <div class="chart-title">Cumulative Returns</div>
+                    <img src="assets/cumulative_return.png" alt="Cumulative Return">
+                </div>
+            </div>
+
+            <div class="two-col">
+                <div class="chart-container">
+                    <div class="chart-title">Drawdown Analysis</div>
+                    <img src="assets/drawdown.png" alt="Drawdown">
+                </div>
+                <div class="chart-container">
+                    <div class="chart-title">Direction Prediction Accuracy</div>
+                    <img src="assets/direction_accuracy.png" alt="Direction Accuracy">
+                </div>
+            </div>
+        </section>
+
+        <section id="strategy">
+            <div class="section-header">
+                <h2>Strategy Comparison</h2>
+                <p>Comparing different strategy configurations and their performance</p>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">Strategy Configuration Comparison</div>
+                <img src="assets/strategy_comparison_summary.png" alt="Strategy Comparison">
+            </div>
+
+            <div class="performance-table">
+                <h3>📊 Daily Model Features</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Description</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td>Confidence Filtering</td>
+                            <td>Only trade when model confidence &gt; threshold</td>
+                            <td>Reduce low-quality signals</td>
+                        </tr>
+                        <tr>
+                            <td>Percentile Thresholds</td>
+                            <td>Buy/Sell based on prediction distribution</td>
+                            <td>Adaptive signal generation</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Mean Reversion</td>
+                            <td>Counter-trend signals at extremes</td>
+                            <td>Capture reversals</td>
+                        </tr>
+                        <tr>
+                            <td>Kelly Criterion</td>
+                            <td>Optimal position sizing based on edge</td>
+                            <td>Maximize growth rate</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Regime Multipliers</td>
+                            <td>Adjust exposure based on market regime</td>
+                            <td>Risk management</td>
+                        </tr>
+                        <tr>
+                            <td>Exit Model</td>
+                            <td>Separate ML model for exit timing</td>
+                            <td>Optimize trade duration</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="pipeline">
+            <div class="section-header">
+                <h2>Data Pipeline</h2>
+                <p>Leak-free design ensuring no future information contaminates training</p>
+            </div>
+
+            <div class="pipeline-steps">
+                <div class="pipeline-step">
+                    <div class="step-number">1</div>
+                    <h4>Data Loading</h4>
+                    <p>Load historical OHLCV from CSV (yfinance sourced)</p>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">
+                    <div class="step-number">2</div>
+                    <h4>Indicator Calculation</h4>
+                    <p>24 technical indicators with warm-up periods</p>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">
+                    <div class="step-number">3</div>
+                    <h4>Train/Test Split</h4>
+                    <p>Strict temporal separation, no overlap</p>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">
+                    <div class="step-number">4</div>
+                    <h4>Model Training</h4>
+                    <p>Ensemble training on training set only</p>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">
+                    <div class="step-number">5</div>
+                    <h4>Signal Generation</h4>
+                    <p>Predictions with confidence scores</p>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">
+                    <div class="step-number">6</div>
+                    <h4>Backtesting</h4>
+                    <p>Simulate trades with realistic execution</p>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="code-header">Run Daily Pipeline</div>
+                <pre><code># Run the main daily backtesting pipeline
+python3 main.py
+
+# Test on different stocks
+python3 tests/test_strategy_msft.py
+
+# Visualize results
+python3 scripts/visualize_strategy.py</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <div class="cta-section orange-cta">
+                <h2>Explore the Minute-by-Minute Model</h2>
+                <p>See our high-frequency trading system with live Alpaca integration</p>
+                <a href="index.html" class="btn btn-orange">View Minute Model</a>
+                <a href="https://github.com/um-mepel/spy-trading-bot" class="btn btn-secondary" target="_blank">GitHub</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Built by <a href="https://github.com/um-mepel">@um-mepel</a> | 
+           Data from <a href="https://alpaca.markets">Alpaca Markets</a></p>
+        <p class="disclaimer">
+            ⚠️ For educational purposes only. Past performance does not guarantee future results. 
+            Trading involves substantial risk of loss.
+        </p>
+    </footer>
+</body>
+</html>
