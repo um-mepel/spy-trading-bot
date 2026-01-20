@@ -10,13 +10,36 @@
 #   3. VM already created (or this script will create one)
 #
 # Usage:
-#   ./deploy.sh <VM_NAME> [ZONE]
+#   ./deploy.sh [OPTIONS] <VM_NAME> [ZONE]
 #
-# Example:
-#   ./deploy.sh trading-bot-vm us-central1-a
+# Options:
+#   --prop-firm    Deploy the prop firm paper trading bot (recommended)
+#   --live         Deploy the live trading bot (SPY, requires Alpaca)
+#
+# Examples:
+#   ./deploy.sh --prop-firm trading-bot-vm us-central1-a
+#   ./deploy.sh --live trading-bot-vm us-central1-a
 # ============================================================================
 
 set -e
+
+# Parse arguments
+BOT_TYPE="prop-firm"  # Default to prop firm (safer)
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --prop-firm)
+            BOT_TYPE="prop-firm"
+            shift
+            ;;
+        --live)
+            BOT_TYPE="live"
+            shift
+            ;;
+        *)
+            break
+            ;;
+    esac
+done
 
 # Configuration
 VM_NAME=${1:-"trading-bot-vm"}
@@ -27,11 +50,28 @@ PROJECT=$(gcloud config get-value project)
 echo "=============================================="
 echo "Deploying Trading Bot to Google Cloud"
 echo "=============================================="
+echo "Bot Type:     $BOT_TYPE"
 echo "VM Name:      $VM_NAME"
 echo "Zone:         $ZONE"
 echo "Project:      $PROJECT"
 echo "Machine Type: $MACHINE_TYPE"
 echo "=============================================="
+
+if [ "$BOT_TYPE" == "prop-firm" ]; then
+    SERVICE_FILE="prop-firm-bot.service"
+    SERVICE_NAME="prop-firm-bot"
+    echo ""
+    echo ">>> Using PROP FIRM paper trading bot"
+    echo "    Simulates /MES futures trading with prop firm rules"
+    echo ""
+else
+    SERVICE_FILE="trading-bot.service"
+    SERVICE_NAME="trading-bot"
+    echo ""
+    echo ">>> Using LIVE trading bot (SPY with Alpaca)"
+    echo "    WARNING: This trades real/paper money on Alpaca"
+    echo ""
+fi
 
 # Check if VM exists
 if gcloud compute instances describe $VM_NAME --zone=$ZONE &>/dev/null; then
@@ -90,15 +130,15 @@ gcloud compute ssh $VM_NAME --zone=$ZONE --command="
     
     # Install dependencies
     pip install --upgrade pip
-    pip install alpaca-py pandas numpy lightgbm scikit-learn pytz
+    pip install alpaca-py pandas numpy lightgbm scikit-learn pytz yfinance
     
     # Create directories
     mkdir -p logs trade_history saved_models
     
     # Set up systemd service
-    sudo cp live_trading/deploy/trading-bot.service /etc/systemd/system/
+    sudo cp live_trading/deploy/$SERVICE_FILE /etc/systemd/system/
     sudo systemctl daemon-reload
-    sudo systemctl enable trading-bot
+    sudo systemctl enable $SERVICE_NAME
     
     echo 'Setup complete!'
 "
@@ -111,21 +151,43 @@ echo "=============================================="
 echo "Deployment Complete!"
 echo "=============================================="
 echo ""
+echo "Bot Type: $BOT_TYPE"
+echo "Service:  $SERVICE_NAME"
+echo ""
 echo "Your trading bot is now on the VM but NOT STARTED yet."
 echo ""
-echo "To start the bot:"
+echo "To SSH into the VM:"
 echo "  gcloud compute ssh $VM_NAME --zone=$ZONE"
-echo "  sudo systemctl start trading-bot"
+echo ""
+echo "To start the bot:"
+echo "  sudo systemctl start $SERVICE_NAME"
 echo ""
 echo "To check status:"
-echo "  sudo systemctl status trading-bot"
+echo "  sudo systemctl status $SERVICE_NAME"
 echo ""
 echo "To view logs:"
-echo "  sudo journalctl -u trading-bot -f"
+echo "  sudo journalctl -u $SERVICE_NAME -f"
+if [ "$BOT_TYPE" == "prop-firm" ]; then
+echo "  # or"
+echo "  tail -f /opt/trading-bot/logs/prop_firm_bot.log"
+else
 echo "  # or"
 echo "  tail -f /opt/trading-bot/logs/bot.log"
+fi
 echo ""
 echo "To stop the bot:"
-echo "  sudo systemctl stop trading-bot"
+echo "  sudo systemctl stop $SERVICE_NAME"
 echo ""
+if [ "$BOT_TYPE" == "prop-firm" ]; then
+echo "To check evaluation status:"
+echo "  cd /opt/trading-bot"
+echo "  source venv/bin/activate"
+echo "  python -m live_trading.prop_firm_paper_bot --status"
+echo ""
+echo "To reset evaluation (start fresh):"
+echo "  sudo systemctl stop $SERVICE_NAME"
+echo "  python -m live_trading.prop_firm_paper_bot --reset"
+echo "  sudo systemctl start $SERVICE_NAME"
+echo ""
+fi
 echo "=============================================="

@@ -1,0 +1,46 @@
+# ============================================================================
+# Systemd Service File for Prop Firm Paper Trading Bot
+# ============================================================================
+# This runs the prop firm paper trading simulation on Google Cloud.
+#
+# Copy to: /etc/systemd/system/prop-firm-bot.service
+#
+# Commands:
+#   sudo systemctl enable prop-firm-bot    # Start on boot
+#   sudo systemctl start prop-firm-bot     # Start now
+#   sudo systemctl stop prop-firm-bot      # Stop
+#   sudo systemctl restart prop-firm-bot   # Restart
+#   sudo systemctl status prop-firm-bot    # Check status
+#   sudo journalctl -u prop-firm-bot -f    # View logs
+# ============================================================================
+
+[Unit]
+Description=Prop Firm Paper Trading Bot (/MES Futures Simulation)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/trading-bot
+Environment="PATH=/opt/trading-bot/venv/bin"
+
+# Run prop firm paper trading bot
+# Options:
+#   --firm the_trading_pit_10k   - Start with $10K account (recommended)
+#   --firm apex_50k              - Start with $50K account
+#   --interval 60                - Check every 60 seconds
+ExecStart=/opt/trading-bot/venv/bin/python3 -m live_trading.prop_firm_paper_bot --firm the_trading_pit_10k --interval 60
+
+Restart=always
+RestartSec=10
+
+# Logging
+StandardOutput=append:/opt/trading-bot/logs/prop_firm_bot.log
+StandardError=append:/opt/trading-bot/logs/prop_firm_bot_error.log
+
+# Security
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/opt/trading-bot
+
+[Install]
+WantedBy=multi-user.target

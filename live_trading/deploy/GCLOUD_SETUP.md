@@ -2,14 +2,27 @@
 
 ## Quick Start
 
-### Option 1: Automated Deployment (Recommended)
+### Option 1: Prop Firm Paper Trading (Recommended)
+
+Deploy the prop firm paper trading bot to simulate trading with prop firm rules before risking real money.
 
 ```bash
 # Make script executable
 chmod +x live_trading/deploy/deploy.sh
 
-# Deploy to GCP (creates VM if it doesn't exist)
-./live_trading/deploy/deploy.sh trading-bot-vm us-central1-a
+# Deploy PROP FIRM paper trading bot (safest - no real money)
+./live_trading/deploy/deploy.sh --prop-firm trading-bot-vm us-central1-a
+```
+
+This simulates /MES futures trading with prop firm rules (daily loss limits, trailing drawdown, profit targets). Perfect for testing the strategy before paying for a real evaluation.
+
+### Option 2: Live/Paper Alpaca Trading
+
+Deploy the live trading bot that trades SPY on your Alpaca account.
+
+```bash
+# Deploy Alpaca trading bot (trades real/paper money on Alpaca)
+./live_trading/deploy/deploy.sh --live trading-bot-vm us-central1-a
 ```
 
 ### Option 2: Manual Setup
@@ -91,7 +104,73 @@ sudo systemctl start trading-bot
 
 ---
 
-## Managing the Bot
+## Managing the Prop Firm Bot
+
+### Check Status
+```bash
+sudo systemctl status prop-firm-bot
+```
+
+### View Live Logs
+```bash
+# System logs
+sudo journalctl -u prop-firm-bot -f
+
+# Application logs
+tail -f /opt/trading-bot/logs/prop_firm_bot.log
+```
+
+### Check Evaluation Progress
+```bash
+cd /opt/trading-bot
+source venv/bin/activate
+python3 -m live_trading.prop_firm_paper_bot --status
+```
+
+### Stop the Bot
+```bash
+sudo systemctl stop prop-firm-bot
+```
+
+### Restart the Bot
+```bash
+sudo systemctl restart prop-firm-bot
+```
+
+### Reset Evaluation (Start Fresh)
+```bash
+# Stop the bot
+sudo systemctl stop prop-firm-bot
+
+# Reset state
+cd /opt/trading-bot
+source venv/bin/activate
+python3 -m live_trading.prop_firm_paper_bot --reset
+
+# Start fresh
+sudo systemctl start prop-firm-bot
+```
+
+### Change Prop Firm
+Edit the service file to use a different firm:
+```bash
+sudo nano /etc/systemd/system/prop-firm-bot.service
+# Change: --firm the_trading_pit_10k to --firm apex_50k
+
+sudo systemctl daemon-reload
+sudo systemctl restart prop-firm-bot
+```
+
+Available firms:
+- `the_trading_pit_10k` - $10K account, easier rules (recommended)
+- `apex_50k` - $50K account, 90% profit split
+- `apex_100k` - $100K account
+- `topstep_50k` - $50K account, strict rules
+- `bulenox_50k` - $50K account, no minimum days
+
+---
+
+## Managing the Live Bot (Alpaca)
 
 ### Check Status
 ```bash
@@ -123,7 +202,7 @@ sudo systemctl restart trading-bot
 sudo systemctl stop trading-bot
 
 # Re-deploy from local machine
-./live_trading/deploy/deploy.sh trading-bot-vm us-central1-a
+./live_trading/deploy/deploy.sh --live trading-bot-vm us-central1-a
 
 # Restart
 sudo systemctl start trading-bot
@@ -252,26 +331,53 @@ sudo swapon /swapfile
 
 ```
 /opt/trading-bot/
-├── venv/                    # Python virtual environment
+├── venv/                         # Python virtual environment
 ├── live_trading/
-│   ├── config.py            # Your API keys & settings
-│   ├── trading_bot.py       # Main bot logic
-│   └── saved_models/        # Trained ML models
+│   ├── config.py                 # API keys & settings
+│   ├── trading_bot.py            # Live Alpaca bot
+│   ├── prop_firm_paper_bot.py    # Prop firm simulation bot
+│   ├── prop_firm_bot.py          # Prop firm rules & logic
+│   ├── paper_trading_state.json  # Saved evaluation state
+│   └── saved_models/             # Trained ML models
 ├── logs/
-│   ├── bot.log              # Application logs
-│   └── bot_error.log        # Error logs
-└── trade_history/           # JSON trade logs
+│   ├── bot.log                   # Alpaca bot logs
+│   ├── prop_firm_bot.log         # Prop firm bot logs
+│   └── paper_trading.log         # Detailed paper trading log
+└── trade_history/                # JSON trade logs
 ```
 
 ---
 
 ## Quick Commands Reference
 
+### Prop Firm Bot (Recommended)
 ```bash
 # SSH into VM
 gcloud compute ssh trading-bot-vm --zone=us-central1-a
 
-# Start bot
+# Start prop firm bot
+sudo systemctl start prop-firm-bot
+
+# Stop prop firm bot
+sudo systemctl stop prop-firm-bot
+
+# View prop firm logs
+tail -f /opt/trading-bot/logs/prop_firm_bot.log
+
+# Check evaluation status
+cd /opt/trading-bot && source venv/bin/activate
+python3 -m live_trading.prop_firm_paper_bot --status
+
+# Reset evaluation
+python3 -m live_trading.prop_firm_paper_bot --reset
+
+# Delete VM (when done)
+gcloud compute instances delete trading-bot-vm --zone=us-central1-a
+```
+
+### Alpaca Live Bot
+```bash
+# Start Alpaca bot
 sudo systemctl start trading-bot
 
 # Stop bot
@@ -282,7 +388,4 @@ tail -f /opt/trading-bot/logs/bot.log
 
 # Check bot status
 sudo systemctl status trading-bot
-
-# Delete VM (when done)
-gcloud compute instances delete trading-bot-vm --zone=us-central1-a
 ```
