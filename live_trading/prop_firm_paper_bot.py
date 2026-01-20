@@ -81,8 +81,10 @@ MES_COMMISSION = 0.62        # Round-turn commission
 MES_SLIPPAGE_TICKS = 1       # Assumed slippage
 
 # Trading parameters
-MIN_CONFIDENCE = 0.70
-MIN_PREDICTED_MOVE = 0.10    # In SPY terms ($0.10)
+# NOTE: Lowered from 0.70 to 0.50 because live model produces smaller predictions
+# Backtest showed 57.2% accuracy at conf >= 0.5
+MIN_CONFIDENCE = 0.50
+MIN_PREDICTED_MOVE = 0.03    # In SPY terms (lowered from $0.10)
 CHECK_INTERVAL_SECONDS = 60  # How often to check for signals
 
 # Timezone
@@ -628,12 +630,12 @@ class PropFirmPaperBot:
         )
         
         # Process signal
-        if prediction['confidence'] >= HIGH_CONFIDENCE_THRESHOLD:
+        if prediction['confidence'] >= MIN_CONFIDENCE:
             pnl = self.process_signal(prediction)
             if pnl is not None:
                 logger.info(f"Trade closed: ${pnl:+,.2f}")
         else:
-            logger.debug(f"Confidence below threshold ({HIGH_CONFIDENCE_THRESHOLD})")
+            logger.debug(f"Confidence below threshold ({MIN_CONFIDENCE})")
         
         # Print status
         self.print_status()
