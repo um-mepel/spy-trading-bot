@@ -1,10 +1,14 @@
-# Exit Model Integration - Documentation Index
+# Trading Model Documentation Index
 
 ## 📑 Quick Navigation
 
-### 🎯 Start Here
-1. **[FINAL_SUMMARY.md](FINAL_SUMMARY.md)** - Complete overview of what was done
-2. **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** - One-page reference card
+### 🎯 Latest Research (January 2026)
+1. **[MODEL_FINDINGS_SUMMARY.md](MODEL_FINDINGS_SUMMARY.md)** - Complete research findings (START HERE)
+2. **[MINUTE_LEVEL_QUICK_REFERENCE.md](MINUTE_LEVEL_QUICK_REFERENCE.md)** - Minute-level model reference
+
+### 🎯 Original System
+3. **[FINAL_SUMMARY.md](FINAL_SUMMARY.md)** - Complete overview of exit model integration
+4. **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** - One-page reference card
 
 ### 📖 Core Documentation
 3. **[README_EXIT_MODEL_INTEGRATION.md](README_EXIT_MODEL_INTEGRATION.md)** - Main implementation guide

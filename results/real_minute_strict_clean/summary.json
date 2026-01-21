@@ -1,0 +1,10 @@
+{
+  "ticker": "SPY",
+  "data_source": "REAL_MARKET_DATA_CLEAN",
+  "training_samples": 928494,
+  "testing_samples": 99325,
+  "correct_accuracy": 0.4877975111755467,
+  "edge_percent": -1.2202488824453295,
+  "z_score": -7.691402071205843,
+  "p_value": 7.327471962526033e-15,
+  "statistically_significant": 

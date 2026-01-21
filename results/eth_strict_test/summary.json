@@ -1,0 +1,38 @@
+{
+  "asset": "ETH-USD",
+  "data_source": "Yahoo Finance (REAL)",
+  "leak_prevention": {
+    "train_test_buffer_days": 100,
+    "features_calculated_separately": true,
+    "no_forward_looking_features": true,
+    "target_within_each_set": true
+  },
+  "training": {
+    "samples": 2177,
+    "start": "2018-02-16",
+    "end": "2024-02-01"
+  },
+  "testing": {
+    "samples": 480,
+    "start": "2024-09-08",
+    "end": "2025-12-31"
+  },
+  "model_performance": {
+    "accuracy": 0.6354166666666666,
+    "edge": 13.541666666666663,
+    "z_score": 5.933661039639299,
+    "p_value": 1.4812656656815193e-09,
+    "statistically_significant": true
+  },
+  "portfolio": {
+    "initial_capital": 10000,
+    "final_capital": 10127.182235765411,
+    "total_return": 1.2718223576541094,
+    "buy_hold_return": 29.153644659900323,
+    "alpha": -27.881822302246213,
+    "total_trades": 18,
+    "win_rate": 50.0,
+    "max_drawdown": -23.972262036641293
+  },
+  "timestamp": "2026-01-20T22:18:37.760452"
+}

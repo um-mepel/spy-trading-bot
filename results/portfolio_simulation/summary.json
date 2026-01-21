@@ -1,0 +1,14 @@
+{
+  "initial_capital": 10000,
+  "final_capital": 10369.77899999999,
+  "total_return_pct": 3.6977899999998955,
+  "annualized_return_pct": 7.532316508840786,
+  "spy_return_pct": 7.868425397640753,
+  "alpha_pct": -4.170635397640858,
+  "total_trades": 586,
+  "win_rate": 57.508532423208194,
+  "max_drawdown_pct": -38.69635576108921,
+  "sharpe_ratio": 1.716770080052977,
+  "profit_factor": 1.2154110358113546,
+  "timestamp": "2026-01-20T21:58:56.538477"
+}

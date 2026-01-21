@@ -35,8 +35,10 @@ def _prepare_training_clean(training_data):
     df = df[:-20].copy()
     
     # Exclude price columns from features
+    # CRITICAL: Also exclude 'Price_Change' to prevent data leakage!
     exclude_cols = {'Date', 'Open', 'High', 'Low', 'Close', 'Volume', 
-                   'Adj Close', 'Price_Change_20d', 'index'}
+                   'Adj Close', 'Price_Change_20d', 'Price_Change', 'index',
+                   'Datetime', 'Target'}  # All possible target/leaky columns
     feature_cols = [col for col in df.columns if col not in exclude_cols]
     
     # Ensure no NaN in features

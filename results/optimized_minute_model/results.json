@@ -1,0 +1,17 @@
+{
+  "accuracy": 0.5211802895278035,
+  "edge": 2.1180289527803486,
+  "z_score": 13.341632328604325,
+  "p_value": 0.0,
+  "target_minutes": 60,
+  "n_features": 27,
+  "training_samples": 928365,
+  "testing_samples": 99196,
+  "simulation": {
+    "total_return": 0.8167000000000008,
+    "win_rate": 66.66666666666666,
+    "total_trades": 12,
+    "sharpe": 24.08980351118184
+  },
+  "timestamp": "2026-01-20T21:53:56.805747"
+}

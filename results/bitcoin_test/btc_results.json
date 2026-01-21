@@ -1,0 +1,18 @@
+{
+  "asset": "BTC-USD",
+  "data_source": "Yahoo Finance (REAL)",
+  "interval": "1 hour",
+  "target_hours": 24,
+  "training_bars": 13886,
+  "testing_bars": 3479,
+  "accuracy": 0.5090543259557344,
+  "edge": 0.905432595573441,
+  "z_score": 1.0681034923744683,
+  "p_value": 0.142736915349293,
+  "total_return": -17.893190116448313,
+  "btc_bh_return": -17.108733828079508,
+  "alpha": -0.7844562883688049,
+  "total_trades": 118,
+  "win_rate": 44.06779661016949,
+  "timestamp": "2026-01-20T22:10:25.641722"
+}

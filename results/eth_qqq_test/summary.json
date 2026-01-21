@@ -1,0 +1,11 @@
+{
+  "ETH": {
+    "ticker": "ETH-USD",
+    "name": "Ethereum",
+    "data_source": "Yahoo Finance (REAL)",
+    "training_days": 2277,
+    "testing_days": 579,
+    "accuracy": 0.6079447322970639,
+    "edge": 10.79447322970639,
+    "p_value": 1.0245750869941617e-07,
+    "significant": 
