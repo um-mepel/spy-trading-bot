@@ -1,0 +1,21 @@
+{
+  "stocks_used": 451,
+  "train_period": "2023-12-13 to 2025-05-01",
+  "test_period": "2025-06-02 to 2025-12-03",
+  "buffer_days": 20,
+  "test_samples": 129,
+  "results": {
+    "direct_spy": 0.5503875968992248,
+    "simple_avg": 0.6821705426356589,
+    "weighted_avg": 0.6821705426356589,
+    "top_stocks": 0.5193798449612403,
+    "best": {
+      "method": "Simple Avg",
+      "accuracy": 0.6821705426356589,
+      "edge": 18.217054263565892,
+      "p_value": 1.7508217865169762e-05
+    }
+  },
+  "statistically_significant": true,
+  "real_data_verification": "SPY latest: $677.58"
+}

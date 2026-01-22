@@ -1,0 +1,57 @@
+{
+  "strategies": [
+    {
+      "name": "Ornstein-Uhlenbeck",
+      "long_signals": 2147,
+      "short_signals": 2189,
+      "total_signals": 4336,
+      "win_rate": 0.4884686346863469,
+      "avg_return": 0.0007811905049946118,
+      "long_win": 0.4899860270144388,
+      "short_win": 0.48698035632708997
+    },
+    {
+      "name": "Bollinger Bands",
+      "long_signals": 1730,
+      "short_signals": 1641,
+      "total_signals": 3371,
+      "win_rate": 0.5161673094037378,
+      "avg_return": 0.01673414297123427,
+      "long_win": 0.5416184971098266,
+      "short_win": 0.4893357708714199
+    },
+    {
+      "name": "RSI Reversal",
+      "long_signals": 3411,
+      "short_signals": 4033,
+      "total_signals": 7444,
+      "win_rate": 0.49731327243417517,
+      "avg_return": 0.008891075411317116,
+      "long_win": 0.5194957490472002,
+      "short_win": 0.4785519464418547
+    },
+    {
+      "name": "GARCH Volatility",
+      "long_signals": 0,
+      "short_signals": 0,
+      "total_signals": 0,
+      "win_rate": 0,
+      "avg_return": 0,
+      "long_win": 0,
+      "short_win": 0
+    },
+    {
+      "name": "MA Crossover",
+      "long_signals": 467,
+      "short_signals": 468,
+      "total_signals": 935,
+      "win_rate": 0.4855614973262032,
+      "avg_return": -0.004506868760055451,
+      "long_win": 0.5139186295503212,
+      "short_win": 0.45726495726495725
+    }
+  ],
+  "best": "Bollinger Bands",
+  "portfolio_return": 2.015871519523225,
+  "buy_hold": 1.2784583891504162
+}

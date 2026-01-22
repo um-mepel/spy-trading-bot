@@ -1,0 +1,16 @@
+{
+  "minute_bars": 109862,
+  "sequences": 10975,
+  "train": 7682,
+  "test": 1647,
+  "accuracy": 0.5075895567698846,
+  "edge": 0.7589556769884598,
+  "p_value": 0.2689414104395593,
+  "significant": false,
+  "strategy_return": -0.18403363573124806,
+  "bh_return": -1.989167580114777,
+  "comparison": {
+    "transformer": 0.5075895567698846,
+    "lightgbm": 0.5239829993928354
+  }
+}

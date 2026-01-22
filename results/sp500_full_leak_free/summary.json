@@ -1,0 +1,31 @@
+{
+  "data": {
+    "source": "Yahoo Finance (REAL)",
+    "stocks": 108,
+    "train_days": 840,
+    "test_days": 341,
+    "buffer_days": 20,
+    "train_start": "2021-04-01",
+    "train_end": "2024-08-02",
+    "test_start": "2024-09-03",
+    "test_end": "2026-01-12"
+  },
+  "leak_prevention": {
+    "date_split": true,
+    "buffer": true,
+    "features_past_only": true,
+    "target_future_only": true,
+    "no_overlap": true
+  },
+  "results": {
+    "direct_spy": 0.5043988269794721,
+    "simple_average": 0.6158357771260997,
+    "accuracy_weighted": 0.6158357771260997,
+    "top_performers": 0.6158357771260997,
+    "best_method": "Simple Average",
+    "best_accuracy": 0.6158357771260997,
+    "best_edge": 11.583577712609971,
+    "p_value": 9.425196685119985e-06,
+    "significant": true
+  }
+}

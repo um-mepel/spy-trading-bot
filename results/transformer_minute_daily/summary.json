@@ -1,0 +1,19 @@
+{
+  "model": "Transformer (Minute\u2192Daily)",
+  "asset": "QQQ",
+  "input": "Minute data aggregated to daily features",
+  "prediction": "Next day direction",
+  "accuracy": 0.631578947368421,
+  "edge": 13.157894736842103,
+  "p_value": 0.12567455440511144,
+  "significant": false,
+  "strategy_return": 0.8520026293828777,
+  "bh_return": -0.3327824133504644,
+  "alpha": 1.1847850427333422,
+  "trades": 18,
+  "win_rate": 66.66666666666666,
+  "comparison": {
+    "transformer": 0.631578947368421,
+    "lightgbm": 0.3157894736842105
+  }
+}

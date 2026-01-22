@@ -1,0 +1,45 @@
+{
+  "strategy": {
+    "name": "Bollinger Bands Mean Reversion",
+    "window": 20,
+    "num_std": 3.0,
+    "hold_period": 15,
+    "position_pct": 0.2
+  },
+  "data": {
+    "symbol": "QQQ",
+    "interval": "1 minute",
+    "start_date": "2025-07-24",
+    "end_date": "2026-01-20",
+    "total_bars": 109867
+  },
+  "returns": {
+    "initial_capital": 10000,
+    "final_capital": 9090.518436968141,
+    "total_return_pct": -9.094815630318589,
+    "buy_hold_return_pct": 7.518477914913177,
+    "alpha_pct": -16.613293545231766
+  },
+  "trades": {
+    "total": 615,
+    "wins": 112,
+    "losses": 503,
+    "win_rate_pct": 18.211382113821138,
+    "avg_return_pct": 0.022524197650006888,
+    "profit_factor": 0.2832596847189348,
+    "total_commission": 1171.4830298548272
+  },
+  "risk": {
+    "max_drawdown_pct": -9.130397874417943,
+    "sharpe_ratio": 10.153193305781091,
+    "calmar_ratio": -0.9961028813214099
+  },
+  "long_short": {
+    "long_trades": 306,
+    "long_win_rate": 22.22222222222222,
+    "long_pnl": -399.60292313722994,
+    "short_trades": 309,
+    "short_win_rate": 14.239482200647249,
+    "short_pnl": -509.87863989463096
+  }
+}

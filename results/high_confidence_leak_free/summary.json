@@ -1,0 +1,17 @@
+{
+  "period": "2023-01-01 to 2026-01-17",
+  "total_trades": 3784,
+  "win_rate": 53.17,
+  "avg_return_per_trade": 0.451,
+  "strategy_return": 1876.92,
+  "spy_return": 107.39,
+  "alpha": 1769.53,
+  "sharpe_ratio": 0.949,
+  "max_drawdown": -59.2,
+  "accuracy_by_confidence_quartile": {
+    "Q1": 56.98,
+    "Q2": 52.54,
+    "Q3": 52.22,
+    "Q4": 50.95
+  }
+}

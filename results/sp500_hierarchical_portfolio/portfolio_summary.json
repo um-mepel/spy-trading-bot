@@ -1,0 +1,22 @@
+{
+  "strategy": "S&P 500 Hierarchical Prediction",
+  "stocks_used": 297,
+  "test_period": "2025-06-27 to 2026-01-12",
+  "performance": {
+    "initial_capital": 100000,
+    "final_equity": 109346.61,
+    "total_return": 9.35,
+    "buy_hold_return": 13.31,
+    "alpha": -3.96
+  },
+  "trades": {
+    "total": 1,
+    "win_rate": 100.0,
+    "avg_win": 10.61,
+    "avg_loss": 0
+  },
+  "risk": {
+    "max_drawdown": -4.6,
+    "sharpe_ratio": 1.84
+  }
+}

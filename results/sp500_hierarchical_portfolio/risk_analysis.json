@@ -1,0 +1,22 @@
+{
+  "strategy": {
+    "return": 10.35,
+    "volatility": 16.06,
+    "sharpe": 0.22,
+    "sortino": 0.28,
+    "max_drawdown": -18.45,
+    "calmar": 0.56,
+    "ulcer_index": 4.6
+  },
+  "buy_hold": {
+    "return": 28.22,
+    "volatility": 17.76,
+    "sharpe": 0.84,
+    "sortino": 1.06,
+    "max_drawdown": -18.76,
+    "calmar": 1.5,
+    "ulcer_index": 4.13
+  },
+  "strategy_wins_metrics": 4,
+  "bh_wins_metrics": 6
+}

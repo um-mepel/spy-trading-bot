@@ -1,0 +1,68 @@
+{
+  "strategy": "High Confidence Stock Picker",
+  "stocks_modeled": 451,
+  "top_n_per_day": 5,
+  "hold_days": 5,
+  "test_period": "2025-04-10 to 2026-01-12",
+  "performance": {
+    "return": 14.18,
+    "spy_return": 33.67,
+    "alpha": -19.49
+  },
+  "trades": {
+    "total": 330,
+    "win_rate": 57.0,
+    "per_day": 1.7
+  },
+  "accuracy_by_percentile": [
+    {
+      "percentile": 100,
+      "count": 85664,
+      "accuracy": 51.936636159880464,
+      "avg_return": 0.13586362485773448,
+      "threshold": 3.406578011178052e-06
+    },
+    {
+      "percentile": 50,
+      "count": 42832,
+      "accuracy": 52.8903623459096,
+      "avg_return": 0.2092264184851395,
+      "threshold": 0.18117232809687744
+    },
+    {
+      "percentile": 25,
+      "count": 21416,
+      "accuracy": 54.28184534927157,
+      "avg_return": 0.32067154869670483,
+      "threshold": 0.28583100939657236
+    },
+    {
+      "percentile": 10,
+      "count": 8567,
+      "accuracy": 55.22353215828177,
+      "avg_return": 0.4296404463214779,
+      "threshold": 0.3675177940483362
+    },
+    {
+      "percentile": 5,
+      "count": 4284,
+      "accuracy": 56.41923436041083,
+      "avg_return": 0.5631732447364841,
+      "threshold": 0.40437141488397593
+    },
+    {
+      "percentile": 2,
+      "count": 1714,
+      "accuracy": 55.950991831972,
+      "avg_return": 0.605674452820094,
+      "threshold": 0.43471701725394796
+    },
+    {
+      "percentile": 1,
+      "count": 857,
+      "accuracy": 55.65927654609102,
+      "avg_return": 0.5865885110376522,
+      "threshold": 0.45051721168188286
+    }
+  ]
+}

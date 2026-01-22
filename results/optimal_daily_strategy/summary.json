@@ -1,0 +1,115 @@
+{
+  "optimal_asset": "SPY",
+  "parameters": {
+    "timeframe": "daily",
+    "target_days": 20,
+    "model": "LightGBM",
+    "signal_threshold": "top 30%",
+    "position_size": "30%",
+    "features": [
+      "Spread_Proxy",
+      "Trade_Intensity",
+      "Illiquidity",
+      "RealizedVar_5",
+      "RealizedVar_10",
+      "RealizedVar_20",
+      "ZScore_10",
+      "ZScore_20",
+      "ZScore_50",
+      "Dist_SMA_10",
+      "Dist_SMA_20",
+      "Dist_SMA_50",
+      "Percentile_20",
+      "Percentile_50",
+      "Return_1",
+      "Return_5",
+      "Return_10",
+      "Return_20",
+      "LogReturn_1",
+      "HL_Range_Pct",
+      "Close_Position",
+      "Open_Close_Range"
+    ]
+  },
+  "performance": {
+    "accuracy": 0.6095931997571342,
+    "edge": 10.959319975713422,
+    "strategy_return": 10.643707466726973,
+    "bh_return": 166.16941186898563,
+    "alpha": -155.52570440225867
+  },
+  "all_results": [
+    {
+      "ticker": "ETH-USD",
+      "accuracy": 0.60580204778157,
+      "edge": 10.580204778156999,
+      "p_value": 1.5084131843590143e-07,
+      "significant": "True",
+      "strategy_return": 4.387786148123777,
+      "bh_return": -20.862886604584148,
+      "alpha": 25.250672752707924,
+      "trades": 21,
+      "win_rate": 61.904761904761905
+    },
+    {
+      "ticker": "QQQ",
+      "accuracy": 0.5792227204783259,
+      "edge": 7.922272047832591,
+      "p_value": 3.4013236671626146e-09,
+      "significant": "True",
+      "strategy_return": 27.584719414812554,
+      "bh_return": 121.41532241268713,
+      "alpha": -93.83060299787458,
+      "trades": 54,
+      "win_rate": 64.81481481481481
+    },
+    {
+      "ticker": "SPY",
+      "accuracy": 0.6095931997571342,
+      "edge": 10.959319975713422,
+      "p_value": 0.0,
+      "significant": "True",
+      "strategy_return": 10.643707466726973,
+      "bh_return": 166.16941186898563,
+      "alpha": -155.52570440225867,
+      "trades": 68,
+      "win_rate": 55.88235294117647
+    },
+    {
+      "ticker": "BTC-USD",
+      "accuracy": 0.5030674846625767,
+      "edge": 0.30674846625766694,
+      "p_value": 0.43048388668797133,
+      "significant": "False",
+      "strategy_return": -6.71875844233171,
+      "bh_return": 217.24858797906342,
+      "alpha": -223.96734642139512,
+      "trades": 33,
+      "win_rate": 66.66666666666666
+    },
+    {
+      "ticker": "AAPL",
+      "accuracy": 0.4504424778761062,
+      "edge": -4.95575221238938,
+      "p_value": 1.2272371409105531e-06,
+      "significant": "False",
+      "strategy_return": -20.113748935774613,
+      "bh_return": 915.5151143904801,
+      "alpha": -935.6288633262548,
+      "trades": 81,
+      "win_rate": 45.67901234567901
+    },
+    {
+      "ticker": "MSFT",
+      "accuracy": 0.5553884711779449,
+      "edge": 5.538847117794488,
+      "p_value": 3.7509412509351137e-07,
+      "significant": "True",
+      "strategy_return": 45.310730161346704,
+      "bh_return": 487.30189649429167,
+      "alpha": -441.99116633294494,
+      "trades": 67,
+      "win_rate": 62.68656716417911
+    }
+  ]
+}

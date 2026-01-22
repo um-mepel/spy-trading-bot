@@ -1,0 +1,16 @@
+{
+  "total_minute_bars": 736301,
+  "daily_samples": 1033,
+  "sequences": 993,
+  "train_samples": 695,
+  "test_samples": 149,
+  "model_params": 807042,
+  "accuracy": 0.5771812080536913,
+  "edge": 7.718120805369133,
+  "p_value": 0.029766704615291073,
+  "significant": true,
+  "comparison": {
+    "transformer": 0.5771812080536913,
+    "lightgbm": 0.6644295302013423
+  }
+}

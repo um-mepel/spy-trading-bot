@@ -1,0 +1,14 @@
+{
+  "stocks_used": 50,
+  "test_days": 181,
+  "avg_individual_accuracy": 0.6906077348066298,
+  "methods": {
+    "direct_spy": 0.5359116022099447,
+    "simple_average": 0.6906077348066298,
+    "accuracy_weighted": 0.6961325966850829,
+    "meta_model": 0.6373626373626373,
+    "transformer": 0.5660377358490566
+  },
+  "best_method": "Accuracy-Weighted",
+  "best_accuracy": 0.6961325966850829
+}

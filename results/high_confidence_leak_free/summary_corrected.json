@@ -1,0 +1,21 @@
+{
+  "period": "2023-01-04 to 2026-01-16",
+  "period_years": 3.0,
+  "strategy_return": 341.68,
+  "strategy_annualized": 63.12,
+  "spy_return": 87.65,
+  "spy_annualized": 23.04,
+  "alpha": 254.03,
+  "alpha_annualized": 40.08,
+  "sharpe_ratio": 1.729,
+  "max_drawdown": -36.43,
+  "total_trades": 3784,
+  "win_rate": 53.17,
+  "avg_return_per_trade": 0.451,
+  "methodology": {
+    "top_n_per_day": 5,
+    "hold_days": 5,
+    "retrain_frequency": "monthly",
+    "data_leakage": "NONE"
+  }
+}

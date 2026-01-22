@@ -1,0 +1,24 @@
+{
+  "asset": "QQQ",
+  "interval": "1m",
+  "target": "60min",
+  "significance_threshold": "0.3%",
+  "samples": {
+    "train_all": 76842,
+    "train_filtered": 13005,
+    "test": 32933
+  },
+  "model_all": {
+    "accuracy": 0.5062399416998148,
+    "edge": 0.6239941699814788
+  },
+  "model_filtered": {
+    "accuracy": 0.5017156044089515,
+    "edge": 0.17156044089514655
+  },
+  "portfolio": {
+    "all": -0.7630845070932446,
+    "filtered": -0.03467120025659824,
+    "buy_hold": 0.7542228189699585
+  }
+}

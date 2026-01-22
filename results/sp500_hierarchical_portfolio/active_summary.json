@@ -1,0 +1,21 @@
+{
+  "strategy": "S&P 500 Hierarchical: Signal > 0.52, 5-day hold",
+  "models": 198,
+  "test_period": "2024-09-03 to 2026-01-12",
+  "performance": {
+    "total_return": 7.68,
+    "buy_hold": 28.22,
+    "alpha": -20.53
+  },
+  "trades": {
+    "count": 66,
+    "win_rate": 62.1,
+    "avg_win": 1.59,
+    "avg_loss": -1.68
+  },
+  "risk": {
+    "max_drawdown": -18.59,
+    "sharpe": 0.43
+  },
+  "trading_accuracy": 62.1
+}

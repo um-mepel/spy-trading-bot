@@ -1,0 +1,27 @@
+{
+  "best_params": {
+    "window": 20,
+    "num_std": 3.0,
+    "hold_period": 15
+  },
+  "validation_performance": {
+    "signals": 162,
+    "win_rate": 0.5802469135802469,
+    "avg_return": 0.05471721910145899,
+    "sharpe": 2.793784478294151
+  },
+  "test_performance": {
+    "signals": 219,
+    "win_rate": 0.547945205479452,
+    "avg_return": 0.01841691702239241
+  },
+  "portfolio": {
+    "final_capital": 10068.372556797487,
+    "total_return": 0.6837255679748705,
+    "num_trades": 179,
+    "win_rate": 0.547486033519553,
+    "max_drawdown": -0.2531478939598878
+  },
+  "buy_hold_return": -2.3051947530343715,
+  "alpha": 2.988920321009242
+}

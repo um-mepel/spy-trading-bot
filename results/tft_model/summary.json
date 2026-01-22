@@ -1,0 +1,14 @@
+{
+  "model": "Transformer",
+  "asset": "ETH-USD",
+  "accuracy": 0.5411764705882353,
+  "edge": 4.117647058823525,
+  "p_value": 0.04477753720682143,
+  "strategy_return": -7.423042417979832,
+  "bh_return": 31.178305840008587,
+  "alpha": -38.60134825798842,
+  "comparison": {
+    "transformer_accuracy": 0.5411764705882353,
+    "lightgbm_accuracy": 0.5976470588235294
+  }
+}

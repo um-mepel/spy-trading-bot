@@ -1,0 +1,20 @@
+{
+  "strategy": "Middle Confidence (D4-D7)",
+  "deciles_used": [
+    "D4",
+    "D5",
+    "D6",
+    "D7"
+  ],
+  "position_size_pct": 7.6,
+  "strategy_return": 108.39,
+  "all_deciles_return": 85.78,
+  "spy_return": 87.14,
+  "alpha": 21.25,
+  "sharpe": 1.816,
+  "max_drawdown": -12.85,
+  "total_trades": 1514,
+  "win_rate": 54.95,
+  "avg_return_per_trade": 0.686,
+  "verdict": "STRATEGY BEATS SPY"
+}
