@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minute-Level SPY Model | AI Trading Bot</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+
+    <header>
+        <div class="logo">
+            <div class="logo-icon">📈</div>
+            AI Trading Bot
+        </div>
+        <nav>
+            <a href="index.html">Stock Picker</a>
+            <a href="minute-model.html" class="active">Minute Model</a>
+            <a href="daily-model.html">Daily Model</a>
+            <a href="https://github.com/um-mepel/spy-trading-bot" target="_blank">GitHub</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-badge">⚡ MINUTE-LEVEL TRADING</div>
+            <h1>Real-Time SPY Predictions at 1-Minute Resolution</h1>
+            <p>A LightGBM model trained on 928,000+ real minute bars, achieving statistically significant 
+               edge on out-of-sample data with live Alpaca integration.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">+17.68%</div>
+                    <div class="stat-label">6-Month Return</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">56.74%</div>
+                    <div class="stat-label">Accuracy</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">928K</div>
+                    <div class="stat-label">Training Bars</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">p&lt;0.0001</div>
+                    <div class="stat-label">Statistical Sig.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="model-comparison">
+            <div class="comparison-cards">
+                <a href="index.html" class="model-card">
+                    <div class="model-icon">🎯</div>
+                    <h3>S&P 500 Stock Picker</h3>
+                    <p>Daily predictions for all ~450 S&P 500 stocks</p>
+                    <ul>
+                        <li>229.95% return (2020-2026)</li>
+                        <li>5 stocks per day, 5-day hold</li>
+                        <li>Monthly model retraining</li>
+                        <li>Live on Alpaca (paper)</li>
+                    </ul>
+                    <span class="model-tag">View Stock Picker →</span>
+                </a>
+                <a href="minute-model.html" class="model-card active">
+                    <div class="model-icon">⚡</div>
+                    <h3>Minute-by-Minute Model</h3>
+                    <p>Real-time predictions every 60 seconds using live Alpaca data</p>
+                    <ul>
+                        <li>928,494 training samples</li>
+                        <li>4.5 years of data (2020-2024)</li>
+                        <li>Extended hours trading</li>
+                        <li>Live deployment ready</li>
+                    </ul>
+                    <span class="model-tag current">Currently Viewing</span>
+                </a>
+            </div>
+        </section>
+
+        <section id="results">
+            <div class="section-header">
+                <h2>Real Minute Data Performance</h2>
+                <p>Tested on 99,325 out-of-sample minute bars from July to December 2024</p>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">Model Performance Overview</div>
+                <img src="assets/01_real_data_overview.png" alt="Real Data Overview">
+            </div>
+
+            <div class="two-col">
+                <div class="chart-container">
+                    <div class="chart-title">High-Confidence Trading Simulation</div>
+                    <img src="assets/02_trading_simulation.png" alt="Trading Simulation">
+                </div>
+                <div class="chart-container">
+                    <div class="chart-title">Real vs Synthetic Data Comparison</div>
+                    <img src="assets/03_synthetic_vs_real_comparison.png" alt="Synthetic vs Real">
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis">
+            <div class="section-header">
+                <h2>6-Month Deep Analysis</h2>
+                <p>Comprehensive breakdown of every trading day from July to December 2024</p>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">Full Period Performance Dashboard</div>
+                <img src="assets/05_full_6month_analysis.png" alt="6 Month Analysis">
+            </div>
+
+            <div class="performance-table">
+                <h3>📊 Key Metrics</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Value</th>
+                            <th>Significance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td>Overall Accuracy</td>
+                            <td class="positive">56.74%</td>
+                            <td>+6.74% edge over random</td>
+                        </tr>
+                        <tr>
+                            <td>High Confidence Accuracy</td>
+                            <td class="positive">58.23%</td>
+                            <td>+8.23% edge when confident</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Z-Score</td>
+                            <td class="positive">42.89</td>
+                            <td>Extremely significant</td>
+                        </tr>
+                        <tr>
+                            <td>P-Value</td>
+                            <td class="positive">&lt; 0.0001</td>
+                            <td>Not due to chance</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Winning Days</td>
+                            <td class="positive">128/135</td>
+                            <td>94.8% of trading days</td>
+                        </tr>
+                        <tr>
+                            <td>Training Period</td>
+                            <td>Jan 2020 - Jun 2024</td>
+                            <td>4.5 years</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Testing Period</td>
+                            <td>Jul 2024 - Dec 2024</td>
+                            <td>6 months out-of-sample</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">Single Day Analysis: August 5, 2024 (High Volatility)</div>
+                <img src="assets/04_single_day_2024-08-05.png" alt="Single Day Analysis">
+            </div>
+        </section>
+
+        <section id="portfolio">
+            <div class="section-header">
+                <h2>Portfolio Simulation</h2>
+                <p>$100,000 starting capital with realistic execution, slippage, and position sizing</p>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">Complete Portfolio Backtest</div>
+                <img src="assets/06_portfolio_simulation.png" alt="Portfolio Simulation">
+            </div>
+
+            <div class="stats-grid five-col">
+                <div class="stat-card">
+                    <div class="stat-value">$117.7K</div>
+                    <div class="stat-label">Final Value</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">65.0%</div>
+                    <div class="stat-label">Win Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">2,795</div>
+                    <div class="stat-label">Trades</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">6.92</div>
+                    <div class="stat-label">Profit Factor</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">-0.08%</div>
+                    <div class="stat-label">Max Drawdown</div>
+                </div>
+            </div>
+
+            <div class="alpha-card">
+                <div class="alpha-value">+9.89%</div>
+                <div class="alpha-label">Alpha Generated vs Buy-and-Hold</div>
+                <p>Strategy returned +17.68% while SPY buy-and-hold returned +7.79%</p>
+            </div>
+        </section>
+
+        <section id="live">
+            <div class="section-header">
+                <h2>Live Trading Infrastructure</h2>
+                <p>Ready for deployment with Alpaca Markets integration</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Alpaca Integration</h3>
+                    <p>Direct connection to Alpaca Markets for paper and live trading</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">☁️</div>
+                    <h3>Google Cloud Ready</h3>
+                    <p>Deployment scripts for running 24/7 on GCP Compute Engine</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🕐</div>
+                    <h3>Extended Hours</h3>
+                    <p>Trades pre-market (4am), regular, and after-hours (8pm)</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Risk Management</h3>
+                    <p>Daily loss limits, max drawdown stops, confidence filtering</p>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="code-header">Quick Start</div>
+                <pre><code># Run minute-level test on real data
+python3 tests/test_real_minute_data_strict.py
+
+# Start live trading bot (paper)
+python3 live_trading/run_bot.py --simulate
+
+# Deploy to Google Cloud
+./live_trading/deploy/deploy.sh trading-bot-vm us-central1-a</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <div class="cta-section">
+                <h2>Explore the Code</h2>
+                <p>Full source code, documentation, and deployment scripts available on GitHub</p>
+                <a href="https://github.com/um-mepel/spy-trading-bot" class="btn" target="_blank">View Repository</a>
+                <a href="daily-model.html" class="btn btn-secondary">View Daily Model</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Built by <a href="https://github.com/um-mepel">@um-mepel</a> | 
+           Data from <a href="https://alpaca.markets">Alpaca Markets</a></p>
+        <p class="disclaimer">
+            ⚠️ For educational purposes only. Past performance does not guarantee future results. 
+            Trading involves substantial risk of loss.
+        </p>
+    </footer>
+</body>
+</html>

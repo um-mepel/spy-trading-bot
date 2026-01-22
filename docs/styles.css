@@ -719,3 +719,70 @@ footer a {
         display: block;
     }
 }
+
+/* New Styles for Stock Picker */
+.stat-card.glow-cyan {
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+    border-color: var(--accent-cyan);
+}
+
+.stat-card.glow-cyan .stat-value {
+    color: var(--accent-cyan);
+}
+
+.stat-card.glow-green {
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
+    border-color: var(--accent-green);
+}
+
+.stat-card.glow-green .stat-value {
+    color: var(--accent-green);
+}
+
+.stat-card.glow-purple {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.2);
+    border-color: var(--accent-purple);
+}
+
+.stat-card.glow-purple .stat-value {
+    color: var(--accent-purple);
+}
+
+/* Warning Card */
+.warning-card {
+    background: rgba(255, 107, 53, 0.08);
+    border: 1px solid rgba(255, 107, 53, 0.3);
+    border-radius: 16px;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 1200px;
+}
+
+.warning-card h3 {
+    color: var(--accent-orange);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.warning-card ul {
+    list-style: none;
+    margin: 0;
+}
+
+.warning-card li {
+    padding: 10px 0;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.warning-card li strong {
+    color: var(--text-primary);
+}
+
+/* Table Note */
+.table-note {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 15px;
+    font-style: italic;
+}
