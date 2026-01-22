@@ -1,0 +1,39 @@
+# ============================================================================
+# Systemd Service File for Stock Picker Bot
+# ============================================================================
+# Copy to: /etc/systemd/system/stock-picker.service
+#
+# Commands:
+#   sudo systemctl enable stock-picker    # Start on boot
+#   sudo systemctl start stock-picker     # Start now
+#   sudo systemctl stop stock-picker      # Stop
+#   sudo systemctl restart stock-picker   # Restart
+#   sudo systemctl status stock-picker    # Check status
+#   sudo journalctl -u stock-picker -f    # View logs
+# ============================================================================
+
+[Unit]
+Description=S&P 500 Stock Picker Bot (Daily)
+After=network.target
+
+[Service]
+Type=simple
+User=trading
+Group=trading
+WorkingDirectory=/opt/trading-bot
+Environment="PATH=/opt/trading-bot/venv/bin"
+ExecStart=/opt/trading-bot/venv/bin/python3 -m live_trading.stock_picker_bot
+Restart=always
+RestartSec=60
+
+# Logging
+StandardOutput=append:/opt/trading-bot/logs/stock_picker.log
+StandardError=append:/opt/trading-bot/logs/stock_picker_error.log
+
+# Security
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/opt/trading-bot
+
+[Install]
+WantedBy=multi-user.target

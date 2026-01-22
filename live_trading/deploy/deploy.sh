@@ -35,6 +35,10 @@ while [[ $# -gt 0 ]]; do
             BOT_TYPE="live"
             shift
             ;;
+        --stock-picker)
+            BOT_TYPE="stock-picker"
+            shift
+            ;;
         *)
             break
             ;;
@@ -63,6 +67,13 @@ if [ "$BOT_TYPE" == "prop-firm" ]; then
     echo ""
     echo ">>> Using PROP FIRM paper trading bot"
     echo "    Simulates /MES futures trading with prop firm rules"
+    echo ""
+elif [ "$BOT_TYPE" == "stock-picker" ]; then
+    SERVICE_FILE="stock-picker.service"
+    SERVICE_NAME="stock-picker"
+    echo ""
+    echo ">>> Using STOCK PICKER bot (S&P 500 daily picks)"
+    echo "    Picks 5 stocks daily, 5-day hold, Alpaca paper trading"
     echo ""
 else
     SERVICE_FILE="trading-bot.service"
